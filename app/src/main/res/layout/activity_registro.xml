@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registro">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:padding="16dp">
+
+        <!-- Logo superior centrado -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="Logo ParkMobileUCC"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Opciones de Login y Registro centradas debajo del logo -->
+        <LinearLayout
+            android:id="@+id/loginOptionsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logoImageView"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/loginTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="#0000FF"
+                android:textSize="16dp"
+                android:paddingEnd="8dp" />
+
+            <TextView
+                android:id="@+id/textLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registro"
+                android:textColor="#007bff"
+                android:textSize="16dp"
+                android:clickable="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Campo de Correo -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loginOptionsLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:hint="Correo*"
+            android:drawableStart="@drawable/correo"
+            android:drawablePadding="8dp"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:backgroundTint="#D3D3D3" />
+
+        <!-- Campo de Matrícula -->
+        <EditText
+            android:id="@+id/matriculaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:hint="Matrícula (opcional)"
+            android:drawableStart="@drawable/matricula"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:padding="12dp"
+            android:backgroundTint="#D3D3D3" />
+
+        <!-- Campo de Nombre -->
+        <EditText
+            android:id="@+id/nombreEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/matriculaEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:hint="Nombre*"
+            android:drawableStart="@drawable/user"
+            android:drawablePadding="8dp"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:backgroundTint="#D3D3D3" />
+
+        <!-- Campo de Contraseña -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nombreEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:hint="Contraseña*"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="8dp"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:backgroundTint="#D3D3D3" />
+
+        <!-- Campo de Confirmar Contraseña -->
+        <EditText
+            android:id="@+id/confirmPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passwordEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:hint="Confirmar contraseña*"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="8dp"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:backgroundTint="#D3D3D3" />
+
+        <!-- Botón de Siguiente centrado -->
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/confirmPasswordEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="Siguiente"
+            android:backgroundTint="#2196F3"
+            android:textColor="#FFFFFF" />
+
+        <!-- Logo inferior centrado al final -->
+        <ImageView
+            android:id="@+id/uccLogoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/colon"
+            android:contentDescription="Logo Universidad Cristóbal Colón"
+            android:layout_marginTop="450dp" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
