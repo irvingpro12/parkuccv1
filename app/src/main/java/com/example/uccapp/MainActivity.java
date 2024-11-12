@@ -16,6 +16,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.ClientError;
 import com.android.volley.VolleyError;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -99,15 +101,16 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
 
                             // Hacer algo en caso de obtener respuesta
-                            Toast.makeText(getApplicationContext(), "Credenciales Incorrectas", Toast.LENGTH_SHORT).show();
-                            // Vamos a poner la respuesta como String en la pantalla
 
+                                // Extraer el valor del parámetro "status"
+                            int status = 0;
                             try {
+                                status = response.getInt("status");
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
 
-                                // Extraer el valor del parámetro "edad"
-                                int status = response.getInt("status");
-
-                                // Paso 3: Usar el valor en una condición `if`
+                            // Paso 3: Usar el valor en una condición `if`
                                 if (status == 200) {
                                     Intent i = new Intent(MainActivity.this, Inicio.class);
                                     startActivity(i);
@@ -115,24 +118,19 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Credenciales Incorrectas", Toast.LENGTH_SHORT).show();
                                 }
 
-                            } catch (JSONException e) {
-                                Toast.makeText(getApplicationContext(), "No hay conexion", Toast.LENGTH_SHORT).show();
-                            }
-
-                            // La respuesta saldrá algo como así { "status": 200, "message": "User validated successfully." }
-
-                            // Ustedes vean como manejar esa información
-
-                            // Les recomiendo
-
                         }
 
                         @Override
                         public void onError(VolleyError error) {
                             // Hacer algo en caso de error
-
-
+                            if (error instanceof ClientError) {
+                                Toast.makeText(getApplicationContext(), "Cuenta no existente", Toast.LENGTH_LONG).show();
+                            }
+                            else if (error instanceof AuthFailureError){
+                                Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                            }
                         }
+
 
                     });
 

@@ -29,6 +29,9 @@ public class VolleyHttpHelper {
     private static VolleyHttpHelper instance;
     private RequestQueue requestQueue;
 
+    // Predefined Bearer token as a static attribute
+    private static final String AUTH_TOKEN = "irving_garnachas";  // Replace this with your token
+
     // Singleton Pattern
     private VolleyHttpHelper(Context context) {
         requestQueue = Volley.newRequestQueue(context.getApplicationContext());
@@ -63,6 +66,8 @@ public class VolleyHttpHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json"); // Add the JSON content type header
+                headers.put("Authorization", "Bearer " + AUTH_TOKEN); // Add Bearer token for authorization
+
                 return headers;
             }
         };
@@ -70,7 +75,6 @@ public class VolleyHttpHelper {
         // Add the request to the RequestQueue
         requestQueue.add(jsonObjectRequest);
     }
-
 
     // GET Request
     public void get(String url, final VolleyResponseListener listener) {
